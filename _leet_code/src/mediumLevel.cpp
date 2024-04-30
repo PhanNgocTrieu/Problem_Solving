@@ -1312,4 +1312,8 @@ namespace leetcode
             }
         }
     }
+
+    long long mediumLevel::wonderfulSubstrings(string word) {
+
+    }
 }
