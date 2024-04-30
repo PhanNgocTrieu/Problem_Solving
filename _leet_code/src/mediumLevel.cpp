@@ -539,16 +539,21 @@ namespace leetcode
                 int s = nums[i] + nums[l] + nums[r];
                 int dif = abs(target - s);
 
-                if (dif < rest)
-                    if (dif)
+                if (dif < rest) {
+                    if (dif) {
                         rest = dif, answer = s;
-                    else
+                    }
+                    else {
                         return s;
+                    }
+                } 
 
-                if (s < target)
+                if (s < target) {
                     l++;
-                else
+                }
+                else {
                     r--;
+                }
             }
         }
 
@@ -598,6 +603,7 @@ namespace leetcode
 
     int mediumLevel::concatenatedBinary(int n)
     {
+        return 0;
     }
 
     string mediumLevel::pushDominoes(string dominoes)

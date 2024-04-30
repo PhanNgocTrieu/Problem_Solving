@@ -5,7 +5,7 @@
 using namespace leetcode;
 
 template <class _Ty>
-void reallocated(_Ty * temp) {
+void deallocated(_Ty * temp) {
     if (temp) {
         delete temp;
         temp = nullptr;
@@ -21,9 +21,9 @@ int main()
     auto getVal = mediumlevelController->simplifyPath("/.///NWtm/KBp/TQdj/a/v/rsJ/n/j/../../lsw/./j/../Gh/////gNBxM/./");
     std::cout << "res: " << getVal << std::endl;
 
-    reallocated(easylevelController);
-    reallocated(mediumlevelController);
-    reallocated(hardlevelController);
+    deallocated(easylevelController);
+    deallocated(mediumlevelController);
+    deallocated(hardlevelController);
     
     return 0;
 }
