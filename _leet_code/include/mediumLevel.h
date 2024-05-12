@@ -8,10 +8,11 @@ namespace leetcode
 
     class mediumLevel
     {
-    
+
     public:
-        enum VAR_TYPE{
-            CHAR    =   0,
+        enum VAR_TYPE
+        {
+            CHAR = 0,
             INT,
             LONG,
             LONGLONG,
@@ -368,7 +369,7 @@ namespace leetcode
          * return the product of num1 and num2, also represented as a string.
          *
          * Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
-         * 
+         *
          * Example:
          *      Input: num1 = "56", num2 = "21"
          *      Output: "1176"
@@ -376,125 +377,125 @@ namespace leetcode
         string multiply(string num1, string num2);
 
         /**
-         * @brief 
-         * 
-         *          Given an integer array nums, 
-         *          return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. 
+         * @brief
+         *
+         *          Given an integer array nums,
+         *          return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k].
          *          If no such indices exists, return false.
-         * 
+         *
          *          Example 1:
          *              Input: nums = [1,2,3,4,5]
          *              Output: true
          *          Explanation: Any triplet where i < j < k is valid.
-         * @param nums 
-         * @return true 
-         * @return false 
+         * @param nums
+         * @return true
+         * @return false
          */
-        bool increasingTriplet(vector<int>& nums);
+        bool increasingTriplet(vector<int> &nums);
 
         /**
-         * @brief 
-         * 
+         * @brief
+         *
          *      Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
-         *      Each row must contain the digits 1-9 without repetition. 
+         *      Each row must contain the digits 1-9 without repetition.
          *      Each column must contain the digits 1-9 without repetition.
          *      Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
-         * 
+         *
          *      Note:
          *          A Sudoku board (partially filled) could be valid but is not necessarily solvable.
          *          Only the filled cells need to be validated according to the mentioned rules.
-         * 
-         * @param board 
-         * @return true 
-         * @return false 
+         *
+         * @param board
+         * @return true
+         * @return false
          */
-        bool isValidSudoku(vector<vector<char>>& board);
+        bool isValidSudoku(vector<vector<char>> &board);
 
         /**
-         * @brief 
-         * 
-         * @param head 
-         * @return ListNode* 
+         * @brief
+         *
+         * @param head
+         * @return ListNode*
          */
         ListNode *detectCycle(ListNode *head);
 
         /**
          *
          * @brief
-         *    
+         *
          *    Given an array of strings strs, group the anagrams together. You can return the answer in any order.
-         *    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+         *    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
          *    typically using all the original letters exactly once.
          *
          */
-        vector<vector<string>> groupAnagrams(vector<string>& strs);
+        vector<vector<string>> groupAnagrams(vector<string> &strs);
 
         /**
-         * @brief 
-         * 
-         * @param n 
-         * @return string 
+         * @brief
+         *
+         * @param n
+         * @return string
          */
         string countAndSay(int n);
 
         /**
-         * @brief 
-         *          Given the root of a binary tree and an integer targetSum, 
-         *          return all root-to-leaf paths where the sum of the node values in the path equals targetSum. 
+         * @brief
+         *          Given the root of a binary tree and an integer targetSum,
+         *          return all root-to-leaf paths where the sum of the node values in the path equals targetSum.
          *          Each path should be returned as a list of the node values, not node references.
-         * 
+         *
          * @param root the root of tree
-         * @param targetSum the target 
+         * @param targetSum the target
          * @return vector<vector<int>> Array of paths
          */
-        vector<vector<int>> pathSum(TreeNode* root, int targetSum);
+        vector<vector<int>> pathSum(TreeNode *root, int targetSum);
 
         /**
-         * @brief   Given an integer array nums of unique elements, return all possible subsets (the power set). 
+         * @brief   Given an integer array nums of unique elements, return all possible subsets (the power set).
                     The solution set must not contain duplicate subsets. Return the solution in any order.
 
 
                     Input: nums = [1,2,3]
                     Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
-         * 
-         * @param nums 
-         * @return vector<vector<int>> 
+         *
+         * @param nums
+         * @return vector<vector<int>>
          */
-        vector<vector<int>> subsets(vector<int>& nums);
+        vector<vector<int>> subsets(vector<int> &nums);
 
         /**
          * @brief
          *          This problems is the same of subests problems
          *          but making sure that no duplicated caser in output
-        */
-        vector<vector<int>> subsetsWithDup(vector<int>& nums);
+         */
+        vector<vector<int>> subsetsWithDup(vector<int> &nums);
 
         /**
          * @brief
          *          You are given two string arrays words1 and words2.
          *          A string b is a subset of string a if every letter in b occurs in a including multiplicity.
-         * 
+         *
          *          For example, "wrr" is a subset of "warrior" but is not a subset of "world".
-         *      
+         *
          *          A string a from words1 is universal if for every string b in words2, b is a subset of a.
          *          Return an array of all the universal strings in words1. You may return the answer in any order.
-        */
-        vector<string> wordSubsets(const vector<string>& words1, const vector<string>& words2);
+         */
+        vector<string> wordSubsets(const vector<string> &words1, const vector<string> &words2);
 
         /**
-         * @brief 
+         * @brief
          *      Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.
-         *      In a Unix-style file system, a period '.' refers to the current directory, a double period '..' refers to the directory up a level, and any multiple consecutive slashes (i.e. '//') are treated as a single slash '/'. 
+         *      In a Unix-style file system, a period '.' refers to the current directory, a double period '..' refers to the directory up a level, and any multiple consecutive slashes (i.e. '//') are treated as a single slash '/'.
          *      For this problem, any other format of periods such as '...' are treated as file/directory names.
-         * 
+         *
          *      The canonical path should have the following format:
          *          The path starts with a single slash '/'.
          *          Any two directories are separated by a single slash '/'.
          *          The path does not end with a trailing '/'.
          *          The path only contains the directories on the path from the root directory to the target file or directory (i.e., no period '.' or double period '..')
-         * 
+         *
          *      Return the simplified canonical path.
-         * 
+         *
          * @example:
          *      ---------
          *      @param Input: path = "/home/"
@@ -505,14 +506,14 @@ namespace leetcode
          *      ---------
          *      @param Input: "/home//foo/"
          *      @param Output: "/home/foo"
-         * 
+         *
          * @param path the input path which was provided
          * @return std::string the result after involked the command as the path
          */
         std::string simplifyPath(std::string path);
 
         /*
-            Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, 
+            Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent,
             with the colors in the order red, white, and blue.
 
             We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
@@ -523,7 +524,7 @@ namespace leetcode
                 Input: nums = [2,0,2,1,1,0]
                 Output: [0,0,1,1,2,2]
         */
-        void sortColors(vector<int>& nums);
+        void sortColors(vector<int> &nums);
 
         /*
             A wonderful string is a string where at most one letter appears an odd number of times.
@@ -554,47 +555,76 @@ namespace leetcode
                 - "aabb" -> "bb"
                 - "aabb" -> "b"
         */
-       long long wonderfulSubstrings(string word);
-        
+        long long wonderfulSubstrings(string word);
+
+        ListNode *removeNodes(ListNode *head);
+
+        /*
+            You are given the head of a linked list with n nodes.
+            For each node in the list, find the value of the next greater node. 
+            That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.
+
+            Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). 
+            If the ith node does not have a next greater node, set answer[i] = 0.
+
+            Example:
+                Input: head = [2,7,4,3,5]
+                Output: [7,0,5,5,0]
+        */
+        vector<int> nextLargerNodes(ListNode *head);
+
     private:
         /* ===================== These functions for supporting ============================= */
-        std::unordered_map<int, int> getMapping(const std::vector<int>& vec) {
+        std::unordered_map<int, int> getMapping(const std::vector<int> &vec)
+        {
             std::unordered_map<int, int> res;
-            for (auto elem : vec) {
+            for (auto elem : vec)
+            {
                 res[elem]++;
             }
             return res;
         }
 
-        bool isFoundOnVec2D(const std::vector<vector<int>>& vec2D,
-                            const std::vector<int>& vec)
-        {   
-            for (auto elem : vec2D) {
-                if (elem.size() == vec.size()) {    
+        bool isFoundOnVec2D(const std::vector<vector<int>> &vec2D,
+                            const std::vector<int> &vec)
+        {
+            for (auto elem : vec2D)
+            {
+                if (elem.size() == vec.size())
+                {
                     std::unordered_map<int, int> firMap = getMapping(elem);
                     std::unordered_map<int, int> secMap = getMapping(vec);
-                    if (firMap == secMap) {
+                    if (firMap == secMap)
+                    {
                         return true;
                     }
                 }
             }
             return false;
         }
-        
-        bool isSame(vector<int>h1,vector<int>h2){
-            for(int i=0;i<26;i++){
-                if(h1[i]>h2[i])return false;
+
+        bool isSame(vector<int> h1, vector<int> h2)
+        {
+            for (int i = 0; i < 26; i++)
+            {
+                if (h1[i] > h2[i])
+                    return false;
             }
             return true;
         }
 
-        vector<string> split(string path, char lim) {
+        vector<string> split(string path, char lim)
+        {
             vector<string> res;
             string temp = "";
-            for (char c : path) {
-                do {
-                    if (c == lim) {
-                        if (temp == "") {
+            for (char c : path)
+            {
+                do
+                {
+                    if (c == lim)
+                    {
+                        if (temp == "")
+                        {
                             break;
                         }
                         res.push_back(temp);
@@ -604,17 +634,22 @@ namespace leetcode
                     temp += c;
                 } while (0);
             }
-            if (temp != "") {
+            if (temp != "")
+            {
                 res.push_back(temp);
             }
             return res;
         }
 
-        std::string remove(std::string& str) {
+        std::string remove(std::string &str)
+        {
             bool nextReturn = false;
-            while (1) {
-                if (str[str.length() - 1] == '/') {
-                    if (nextReturn) {
+            while (1)
+            {
+                if (str[str.length() - 1] == '/')
+                {
+                    if (nextReturn)
+                    {
                         break;
                     }
                     nextReturn = true;
@@ -622,6 +657,25 @@ namespace leetcode
                 str.erase(str.length() - 1);
             }
             return str;
+        }
+
+        pair<ListNode*, int> reverse(ListNode* head) {
+            if (!head || !head->next)
+                return {head, (bool)head};
+
+            ListNode *prev, *curr, *next;
+            prev = nullptr;
+            curr = head;
+            int len = 0;
+
+            while (curr) {
+                next = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = next;
+                len++;
+            }
+            return {prev, len};
         }
     };
 

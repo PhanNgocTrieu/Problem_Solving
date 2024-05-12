@@ -539,19 +539,24 @@ namespace leetcode
                 int s = nums[i] + nums[l] + nums[r];
                 int dif = abs(target - s);
 
-                if (dif < rest) {
-                    if (dif) {
+                if (dif < rest)
+                {
+                    if (dif)
+                    {
                         rest = dif, answer = s;
                     }
-                    else {
+                    else
+                    {
                         return s;
                     }
-                } 
+                }
 
-                if (s < target) {
+                if (s < target)
+                {
                     l++;
                 }
-                else {
+                else
+                {
                     r--;
                 }
             }
@@ -840,18 +845,17 @@ namespace leetcode
         // Checking every rows
         for (int iRow = 0; iRow < 9; iRow++)
         {
-            map_sudoku =
-                {
-                    {'1', false},
-                    {'2', false},
-                    {'3', false},
-                    {'4', false},
-                    {'5', false},
-                    {'6', false},
-                    {'7', false},
-                    {'8', false},
-                    {'9', false},
-                };
+            map_sudoku = {
+                {'1', false},
+                {'2', false},
+                {'3', false},
+                {'4', false},
+                {'5', false},
+                {'6', false},
+                {'7', false},
+                {'8', false},
+                {'9', false},
+            };
             for (int iCol = 0; iCol < 9; iCol++)
             {
                 if (map_sudoku[board[iRow][iCol]] == true)
@@ -867,18 +871,17 @@ namespace leetcode
         // Checking every colums
         for (int idex = 0; idex < 9; ++idex)
         {
-            map_sudoku =
-                {
-                    {'1', false},
-                    {'2', false},
-                    {'3', false},
-                    {'4', false},
-                    {'5', false},
-                    {'6', false},
-                    {'7', false},
-                    {'8', false},
-                    {'9', false},
-                };
+            map_sudoku = {
+                {'1', false},
+                {'2', false},
+                {'3', false},
+                {'4', false},
+                {'5', false},
+                {'6', false},
+                {'7', false},
+                {'8', false},
+                {'9', false},
+            };
 
             for (int jdex = 0; jdex < 9; ++jdex)
             {
@@ -901,18 +904,17 @@ namespace leetcode
             do
             {
                 // Checking the first matrix
-                map_sudoku =
-                    {
-                        {'1', false},
-                        {'2', false},
-                        {'3', false},
-                        {'4', false},
-                        {'5', false},
-                        {'6', false},
-                        {'7', false},
-                        {'8', false},
-                        {'9', false},
-                    };
+                map_sudoku = {
+                    {'1', false},
+                    {'2', false},
+                    {'3', false},
+                    {'4', false},
+                    {'5', false},
+                    {'6', false},
+                    {'7', false},
+                    {'8', false},
+                    {'9', false},
+                };
 
                 for (int iRow = step; iRow < size; ++iRow)
                 {
@@ -931,18 +933,17 @@ namespace leetcode
             do
             {
                 // Checking the second matrix
-                map_sudoku =
-                    {
-                        {'1', false},
-                        {'2', false},
-                        {'3', false},
-                        {'4', false},
-                        {'5', false},
-                        {'6', false},
-                        {'7', false},
-                        {'8', false},
-                        {'9', false},
-                    };
+                map_sudoku = {
+                    {'1', false},
+                    {'2', false},
+                    {'3', false},
+                    {'4', false},
+                    {'5', false},
+                    {'6', false},
+                    {'7', false},
+                    {'8', false},
+                    {'9', false},
+                };
 
                 for (int iRow = step; iRow < size; ++iRow)
                 {
@@ -961,18 +962,17 @@ namespace leetcode
             do
             {
                 // Checking the third matrix
-                map_sudoku =
-                    {
-                        {'1', false},
-                        {'2', false},
-                        {'3', false},
-                        {'4', false},
-                        {'5', false},
-                        {'6', false},
-                        {'7', false},
-                        {'8', false},
-                        {'9', false},
-                    };
+                map_sudoku = {
+                    {'1', false},
+                    {'2', false},
+                    {'3', false},
+                    {'4', false},
+                    {'5', false},
+                    {'6', false},
+                    {'7', false},
+                    {'8', false},
+                    {'9', false},
+                };
 
                 for (int iRow = step; iRow < size; ++iRow)
                 {
@@ -1019,38 +1019,30 @@ namespace leetcode
         return nullptr;
     }
 
-    // bool checking_word(const string& ref, const string& word)
-    // {
-    //     if (ref.length() != word.length())
-    //     {
-    //         return false;
-    //     }
-        
-    //     sort(ref.begin(),ref.end());
-    //     sort(word.begin(),word.end());
-    //     char * letter_find = &((char)ref[0]);
-    //     char * letter_dest = &((char)word[0]);
-
-    //     do {
-    //         if (*letter_dest != *letter_find)
-    //         {
-    //             return false;
-    //         }
-
-    //         if (letter_dest == nullptr)
-    //         {
-    //             break;
-    //         }
-
-    //         letter_dest++;
-    //         letter_find++;
-
-    //     } while (1);
-
-    //     return true;
-    // }       
-
-    vector<vector<string>> mediumLevel::groupAnagrams(vector<string>& strs)
+#if 0
+    bool checking_word(const string& ref, const string& word)
+    {
+        if (ref.length() != word.length()) {
+            return false;
+        }
+        sort(ref.begin(),ref.end());
+        sort(word.begin(),word.end());
+        char * letter_find = &((char)ref[0]);
+        char * letter_dest = &((char)word[0]);
+        do {
+            if (*letter_dest != *letter_find) {
+                return false;
+            }
+            if (letter_dest == nullptr) {
+                break;
+            }
+            letter_dest++;
+            letter_find++;
+        } while (1);
+        return true;
+    }
+#endif
+    vector<vector<string>> mediumLevel::groupAnagrams(vector<string> &strs)
     {
         vector<vector<string>> result;
 
@@ -1059,16 +1051,17 @@ namespace leetcode
             return result;
         }
 
-        for (auto& word : strs)
+        for (auto &word : strs)
         {
             std::cout << word << " ";
         }
         std::cout << std::endl;
-        
+
         return result;
     }
 
-    std::string transform(std::string s) {
+    std::string transform(std::string s)
+    {
         // First character
         char curr = s[0];
         // frequency
@@ -1077,12 +1070,15 @@ namespace leetcode
         // Result
         string ans = "";
 
-        for (int i = 1; i < s.length(); ++i) {
+        for (int i = 1; i < s.length(); ++i)
+        {
             // Checking sequence of character
-            if (s[i] == curr) {
+            if (s[i] == curr)
+            {
                 curr_freq++;
             }
-            else {
+            else
+            {
                 // Concatenating string with number of digit
                 ans += (char)(curr_freq + '0');
                 // Concatenating string with digit
@@ -1093,7 +1089,7 @@ namespace leetcode
                 curr_freq = 1;
             }
         }
-        
+
         /*
             Adding the number of digit and digital number while exit loop
             Because when catching the condition they did not add it yet.
@@ -1106,23 +1102,30 @@ namespace leetcode
         return ans;
     }
 
-    std::string mediumLevel::countAndSay(int n) {
-        if (n == 1) {
+    std::string mediumLevel::countAndSay(int n)
+    {
+        if (n == 1)
+        {
             return "1";
         }
         return transform(countAndSay(n - 1));
     }
 
-    bool checkingPath(TreeNode* root, int targetSum, std::vector<int>& vector) {
-        if (root == nullptr) {
+    bool checkingPath(TreeNode *root, int targetSum, std::vector<int> &vector)
+    {
+        if (root == nullptr)
+        {
             return false;
         }
 
-        if (root->val > targetSum) {
+        if (root->val > targetSum)
+        {
             return false;
         }
-        else if (root->val == targetSum) {
-            if (root->left == nullptr && root->right == nullptr) {
+        else if (root->val == targetSum)
+        {
+            if (root->left == nullptr && root->right == nullptr)
+            {
                 return true;
             }
         }
@@ -1131,15 +1134,15 @@ namespace leetcode
         bool res;
         res = checkingPath(root->left, targetSum - root->val, vector);
         res = checkingPath(root->right, targetSum - root->val, vector);
-        
+
         return res;
     }
 
-    vector<vector<int>> mediumLevel::pathSum(TreeNode* root, int targetSum) {
+    vector<vector<int>> mediumLevel::pathSum(TreeNode *root, int targetSum)
+    {
         return vector<vector<int>>();
     }
 
-    
     /**
      *  [1,2,3]
      *      [{}]
@@ -1147,17 +1150,20 @@ namespace leetcode
      *      [{},{1},{1,2},{2}]
      *      [{},{1},{1,2},{2}] + {3}
      *      [{},{1},{1,2},{2},{1,3},{1,2,3},{2,3},{3}]
-    */
-    vector<vector<int>> mediumLevel::subsets(vector<int>& nums) {
+     */
+    vector<vector<int>> mediumLevel::subsets(vector<int> &nums)
+    {
         // creating the vector of result which contains the empty vector<int> firstly
         vector<vector<int>> result{vector<int>{}};
         // In constrains: nums.length > 0
         result.push_back(vector<int>{nums[0]});
         int size = nums.size();
-        for (int i = 1; i < size; ++i) {
+        for (int i = 1; i < size; ++i)
+        {
             int getVal = nums[i];
             int size_of_result = result.size();
-            for (int j = 1; j < size_of_result; ++j) {
+            for (int j = 1; j < size_of_result; ++j)
+            {
                 vector<int> temp = result[j];
                 temp.push_back(getVal);
                 result.push_back(temp);
@@ -1167,41 +1173,50 @@ namespace leetcode
         return result;
     }
 
-    vector<vector<int>> mediumLevel::subsetsWithDup(vector<int>& nums) {
+    vector<vector<int>> mediumLevel::subsetsWithDup(vector<int> &nums)
+    {
         vector<vector<int>> result{vector<int>{}};
         result.push_back(vector<int>{nums[0]});
-        
+
         int size = nums.size();
-        for (int i = 1; i < size; ++i) {
+        for (int i = 1; i < size; ++i)
+        {
             int getVal = nums[i];
             int size_of_result = result.size();
-            for (int j = 1; j < size_of_result; ++j) {
+            for (int j = 1; j < size_of_result; ++j)
+            {
                 vector<int> temp = result[j];
                 temp.push_back(getVal);
-                if (!isFoundOnVec2D(result, temp)) {
-                    result.push_back(temp); 
+                if (!isFoundOnVec2D(result, temp))
+                {
+                    result.push_back(temp);
                 }
             }
-            vector<int>temp{nums[i]};
-            if (!isFoundOnVec2D(result, temp)) {
+            vector<int> temp{nums[i]};
+            if (!isFoundOnVec2D(result, temp))
+            {
                 result.push_back(temp);
             }
         }
         return result;
     }
 
-    unordered_map<char, int> templateMapping(string container) {
+    unordered_map<char, int> templateMapping(string container)
+    {
         unordered_map<char, int> map;
-        for (auto elem : container) {
+        for (auto elem : container)
+        {
             map[elem]++;
         }
         return map;
     }
 
-    bool isContain(string word, string subword) {
+    bool isContain(string word, string subword)
+    {
         auto word_mapping = templateMapping(word);
         auto subword_mapping = templateMapping(subword);
-        for (auto itr = subword_mapping.begin(); itr != subword_mapping.end(); itr++) {
+        for (auto itr = subword_mapping.begin(); itr != subword_mapping.end(); itr++)
+        {
             if (word_mapping[itr->first] < itr->second)
             {
                 return false;
@@ -1210,9 +1225,11 @@ namespace leetcode
         return true;
     }
 
-    unordered_map<char, int> mapping(const string input) {
+    unordered_map<char, int> mapping(const string input)
+    {
         unordered_map<char, int> map;
-        for (auto c : input) {
+        for (auto c : input)
+        {
             map[c]++;
         }
         return map;
@@ -1222,7 +1239,7 @@ namespace leetcode
      *  input:
      *      word1: ["amazon","apple","facebook","google","leetcode"]
      *      word2: ["el", "eo"]
-     *      
+     *
      *          map[amazon] :
      *              -> map[el] -> false
      *                  break;
@@ -1231,58 +1248,71 @@ namespace leetcode
      *              -> map["el"] -> false
      *                  break;
      *          map[]
-     * 
-     * 
-    */
-    vector<string> mediumLevel::wordSubsets(const vector<string>& words1,const vector<string>& words2) {
-        vector<string>res;
-        vector<int>hash1(26,0);
+     *
+     *
+     */
+    vector<string> mediumLevel::wordSubsets(const vector<string> &words1, const vector<string> &words2)
+    {
+        vector<string> res;
+        vector<int> hash1(26, 0);
 
-        for(int i=0;i<words2.size();i++){
-            vector<int>temp(26,0);
-            for(int j=0;j<words2[i].length();j++){
-                temp[words2[i][j]-97]++;
+        for (int i = 0; i < words2.size(); i++)
+        {
+            vector<int> temp(26, 0);
+            for (int j = 0; j < words2[i].length(); j++)
+            {
+                temp[words2[i][j] - 97]++;
             }
 
-            for(int j=0;j<26;j++){
-                hash1[j]=max(hash1[j],temp[j]);
+            for (int j = 0; j < 26; j++)
+            {
+                hash1[j] = max(hash1[j], temp[j]);
             }
-        } 
-        
+        }
 
-        for(int i=0;i<words1.size();i++){
-            vector<int>hash2(26,0);
-            string temp=words1[i];
-            for(int j=0;j<temp.length();j++){
-                hash2[temp[j]-97]++;
+        for (int i = 0; i < words1.size(); i++)
+        {
+            vector<int> hash2(26, 0);
+            string temp = words1[i];
+            for (int j = 0; j < temp.length(); j++)
+            {
+                hash2[temp[j] - 97]++;
             }
-            if(isSame(hash1,hash2))res.push_back(temp);
+            if (isSame(hash1, hash2))
+                res.push_back(temp);
         }
         return res;
     }
 
     // Fixme for completed this one
-    // Badcase: 
+    // Badcase:
     //      @Input: "/.///NWtm/KBp/TQdj/a/v/rsJ/n/j/../../lsw/./j/../Gh/////gNBxM/./"
     //      @Output: "/NWtm/KBp/TQdj/a/v/rsJ/lsw/Gh/gNBxM"
-    std::string mediumLevel::simplifyPath(std::string path) {
+    std::string mediumLevel::simplifyPath(std::string path)
+    {
         string res = "/";
         vector<string> splitString = split(path, '/');
-        for (auto idex = 0; idex < splitString.size(); ++idex) {
-            do {
-                if (splitString[idex] == ".") {
+        for (auto idex = 0; idex < splitString.size(); ++idex)
+        {
+            do
+            {
+                if (splitString[idex] == ".")
+                {
                     break;
                 }
 
-                if (splitString[idex] == "..") {
-                    if (res.length() <= 1) {
+                if (splitString[idex] == "..")
+                {
+                    if (res.length() <= 1)
+                    {
                         break;
                     }
                     remove(res);
                     break;
                 }
-                
-                if (res[res.length() - 1] != '/') {
+
+                if (res[res.length() - 1] != '/')
+                {
                     res += "/";
                 }
                 res += splitString[idex];
@@ -1290,30 +1320,103 @@ namespace leetcode
             } while (0);
         }
 
-        if (res.length() > 1) {
+        if (res.length() > 1)
+        {
             res.erase(res.end() - 1);
         }
 
         return res;
     }
 
-    void mediumLevel::sortColors(vector<int>& nums) {
+    void mediumLevel::sortColors(vector<int> &nums)
+    {
         int low = 0, high = nums.size() - 1, i = 0;
-        while (i <= high) {
-            if (nums[i] == 0) {
+        while (i <= high)
+        {
+            if (nums[i] == 0)
+            {
                 std::swap(nums[i], nums[low]);
                 ++low;
                 ++i;
-            } else if (nums[i] == 2) {
+            }
+            else if (nums[i] == 2)
+            {
                 std::swap(nums[i], nums[high]);
                 --high;
-            } else {
+            }
+            else
+            {
                 ++i;
             }
         }
     }
 
-    long long mediumLevel::wonderfulSubstrings(string word) {
+    long long mediumLevel::wonderfulSubstrings(string word)
+    {
+    }
 
+    ListNode *mediumLevel::removeNodes(ListNode *head)
+    {
+    }
+
+    vector<int> mediumLevel::nextLargerNodes(ListNode *head)
+    {
+        auto _pair = reverse(head);
+        int _len = _pair.second;
+        auto _reverse = _pair.first;
+
+        /* Initialize res - array with 0 values */
+        vector<int> result(_len, 0);
+        stack<int> stack;
+        while (_reverse != nullptr)
+        {
+            while (
+                stack.size() &&
+                stack.top() <= _reverse->val)
+            {
+                /* pop out every value less than current value to get the greater one */
+                stack.pop();
+            }
+            /* decreasing index to get the index references to the current list */
+            _len--;
+            /* if stack is exist, then we have the greater value than current value */
+            if (stack.size())
+            {
+                /* so we assign the greater value to the positon of current value */
+                result[_len] = stack.top();
+            }
+
+            stack.push(_reverse->val);
+            _reverse = _reverse->next;
+        }
+        return result;
+
+#if 0
+        vector<int> result;
+        ListNode* ref_head = head;
+        while (ref_head != nullptr) {
+            if (head != nullptr && head->next == nullptr) {
+                result.push_back(0);
+            }
+
+            bool _f_flags = false;
+            while (head != nullptr) {
+                if (ref_head->val < head->val) {
+                    result.push_back(head->val);
+                    _f_flags = true;
+                    break;
+                }
+                head = head->next;
+            }
+
+            if (!_f_flags) {
+                result.push_back(0);
+            }
+
+            ref_head = ref_head->next;
+            head = ref_head;
+        }
+        return result;
+#endif
     }
 }

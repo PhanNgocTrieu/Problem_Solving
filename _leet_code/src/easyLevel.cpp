@@ -649,4 +649,24 @@ namespace leetcode
         }        
         return reverse(s);
     }
+
+    vector<int> easyLevel::nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> result;
+        for (int i = 0; i < nums1.size(); i++) {
+            auto _found = std::find(nums2.begin(), nums2.end(), nums1[i]);
+            if ( _found == nums2.end() ) {
+                result.push_back(-1);
+            } else {
+                int _val = -1;
+                for (; _found != nums2.end(); _found++) {
+                    if ( (*_found) > nums1[i] ) {
+                        _val = (*_found);
+                        break;
+                    }
+                }
+                result.push_back(_val);
+            }
+        }
+        return result;
+    }
 };
