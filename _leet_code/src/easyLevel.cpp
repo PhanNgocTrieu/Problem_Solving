@@ -669,4 +669,31 @@ namespace leetcode
         }
         return result;
     }
-};
+
+    vector<vector<int>> easyLevel::largestLocal(vector<vector<int>>& grid) {
+        vector<vector<int>> result;
+        int _count = 0;
+        int s_r = 0;
+        int s_c = 0;
+        do {
+            vector<int> temp;
+            /* Finding max in 3x3 matrix */
+            {
+                int max = -1;
+                {
+                    for (int i = s_i; i < s_i + 2; i++) {
+                        int s_j = 0;   
+                        for (int j = s_j; j < s_j + 2; j++) {
+                            if (max < grid[i][j]) {
+                                max = grid[i][j];
+                            }
+                            s_j++;
+                        }
+                        s_i++;
+                    }
+                }
+                temp.push_back(max);
+            }
+        } while ( s_r < (grid.size() - 2) );
+    }
+};  
