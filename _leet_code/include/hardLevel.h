@@ -5,7 +5,7 @@
 
 namespace leetcode
 {
-    class hardLevel
+    class hardLevel : public ProblemSolving
     {
     public:
         /**

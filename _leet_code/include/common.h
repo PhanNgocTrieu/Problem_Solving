@@ -30,6 +30,15 @@ namespace leetcode
      *
      */
     bool checkTarget(TreeNode *root, int target, int &result);
+
+    class ProblemSolving 
+    {
+        public:
+            virtual ~ProblemSolving() {}
+        protected:
+            int m_dx[4] = {1, -1, 0, 0};
+            int m_dy[4] = {0, 0, 1, -1};
+    };
 }
 
 using namespace std;

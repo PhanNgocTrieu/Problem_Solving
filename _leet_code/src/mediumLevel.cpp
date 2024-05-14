@@ -1419,4 +1419,23 @@ namespace leetcode
         return result;
 #endif
     }
+
+    int mediumLevel::getMaximumGold(vector<vector<int>>& grid) {
+        m = grid.size();
+        n = grid[0].size();
+        for (int r = 0; r < m; r++) {
+            for (int c = 0; c < n; c++) {
+                if (grid[r][c]) {
+                    int sum = 0;
+                    travel_around(grid, r, c, sum);
+                }
+#if 0
+                if (grid[r][c]) {
+                    back_tracking(grid, r, c, 0);
+                }
+#endif
+            }
+        }
+        return m_res;
+    }
 }

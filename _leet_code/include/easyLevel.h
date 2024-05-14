@@ -12,7 +12,7 @@ namespace leetcode
         hard
     } LevelOfProblems;
 
-    class easyLevel
+    class easyLevel : public ProblemSolving
     {
         /**
          * **********************************************************************************

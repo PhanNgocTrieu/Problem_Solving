@@ -6,7 +6,7 @@
 namespace leetcode
 {
 
-    class mediumLevel
+    class mediumLevel : public ProblemSolving
     {
 
     public:
@@ -20,6 +20,13 @@ namespace leetcode
             DOUBLE,
             STRING
         };
+
+        mediumLevel()
+        {
+            ios::sync_with_stdio(false);
+            cin.tie(NULL);
+            cout.tie(NULL);
+        }
 
     public:
         /**
@@ -561,10 +568,10 @@ namespace leetcode
 
         /*
             You are given the head of a linked list with n nodes.
-            For each node in the list, find the value of the next greater node. 
+            For each node in the list, find the value of the next greater node.
             That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.
 
-            Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). 
+            Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed).
             If the ith node does not have a next greater node, set answer[i] = 0.
 
             Example:
@@ -572,6 +579,42 @@ namespace leetcode
                 Output: [7,0,5,5,0]
         */
         vector<int> nextLargerNodes(ListNode *head);
+
+        /*
+            In a gold mine grid of size m x n, each cell in this mine has an integer representing the amount of gold in that cell, 0 if it is empty.
+            Return the maximum amount of gold you can collect under the conditions:
+            Every time you are located in a cell you will collect all the gold in that cell.
+            From your position, you can walk one step to the left, right, up, or down.
+            You can't visit the same cell more than once.
+            Never visit a cell with 0 gold.
+            You can start and stop collecting gold from any position in the grid that has some gold.
+            Example 1:
+                Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
+                Output: 24
+                Explanation:
+                [[0,6,0],
+                [5,8,7],
+                [0,9,0]]
+                Path to get the maximum gold, 9 -> 8 -> 7.
+        */
+        int getMaximumGold(vector<vector<int>> &grid);
+
+    protected:
+        int m_dx[4] = {1, -1, 0, 0};
+        int m_dy[4] = {0, 0, 1, -1};
+
+        /**
+         * @brief result to return with interger value
+         */
+        int m_res = 0;
+        /**
+         * @brief size of rows in 2D matrix
+         */
+        int m;
+        /**
+         * @brief size of cols in 2D matrix
+         */
+        int n;
 
     private:
         /* ===================== These functions for supporting ============================= */
@@ -659,7 +702,8 @@ namespace leetcode
             return str;
         }
 
-        pair<ListNode*, int> reverse(ListNode* head) {
+        pair<ListNode *, int> reverse(ListNode *head)
+        {
             if (!head || !head->next)
                 return {head, (bool)head};
 
@@ -668,7 +712,8 @@ namespace leetcode
             curr = head;
             int len = 0;
 
-            while (curr) {
+            while (curr)
+            {
                 next = curr->next;
                 curr->next = prev;
                 prev = curr;
@@ -677,8 +722,51 @@ namespace leetcode
             }
             return {prev, len};
         }
-    };
 
+        void travel_around(vector<vector<int>> &grid, int r, int c, int sum) {
+            if (r < 0 || r >= m || c < 0 || c >= n) {
+                return;
+            }
+            if (grid[r][c]) {
+                int tmp = grid[r][c];
+                grid[r][c] = 0;
+                sum += tmp;
+                m_res = std::max(m_res, sum);
+
+                travel_around(grid, r + 1, c, sum);
+                travel_around(grid, r - 1, c, sum);
+                travel_around(grid, r, c + 1, sum);
+                travel_around(grid, r, c - 1, sum);
+
+                grid[r][c] = tmp;
+            }
+        }
+
+        void back_tracking(vector<vector<int>> &grid, int r, int c, int t)
+        {
+            int k, l, x, y;
+            k = grid[r][c];
+            grid[r][c] = 0;
+            t += k;
+            if (t > m_res)
+            {
+                m_res = t;
+            }
+
+            for (int p = 0; p < 4; p++)
+            {
+                x = r + m_dx[p];
+                y = c + m_dy[p];
+                if (x < 0 || x == m || y < 0 || y == n)
+                    continue;
+                if (grid[x][y] > 0)
+                {
+                    back_tracking(grid, x, y, t);
+                }
+            }
+            grid[r][c] = k;
+        }
+    };
 };
 
 #endif // _MEDIUM_LEETCODE_H_
