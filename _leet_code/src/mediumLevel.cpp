@@ -1438,4 +1438,43 @@ namespace leetcode
         }
         return m_res;
     }
+
+    int mediumLevel::maximumSafenessFactor(vector<vector<int>>& grid) {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr);
+        int n = grid.size();
+        if(grid[0][0] || grid[n - 1][n - 1]) return 0;
+
+        /* Created reference map for detect the thief */
+        vector<vector<int>> score(n,vector<int>(n,INT_MAX));
+        bfs(grid, score, n);
+
+        /* Created visited mapping */
+        vector<vector<bool>> vis(n, vector<bool>(n, false));
+
+        /* Queue for BFS */
+        priority_queue<pair<int,pair<int,int>>> pq;
+        pq.push({score[0][0], {0,0}});
+
+        /* Travel as BFS */
+        while(!pq.empty()){
+            auto temp = pq.top().second;
+            auto safe = pq.top().first;
+            pq.pop();
+
+            if(temp.first == n - 1 && temp.second == n - 1) return safe;
+            vis[temp.first][temp.second] = true;
+
+            for(int i = 0; i < 4; i++) {
+                int newX = temp.first + roww[i];
+                int newY = temp.second + coll[i];
+
+                if(newX >= 0 && newX < n && newY >= 0 && newY < n && !vis[newX][newY]){
+                    int s = min(safe, score[newX][newY]);
+                    pq.push({s, {newX, newY}});
+                    vis[newX][newY] = true;
+                }
+            }
+        }
+        return -1;
+    }
 }

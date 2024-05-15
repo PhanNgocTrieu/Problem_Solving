@@ -599,9 +599,13 @@ namespace leetcode
         */
         int getMaximumGold(vector<vector<int>> &grid);
 
+        int maximumSafenessFactor(vector<vector<int>> &grid);
+
     protected:
-        int m_dx[4] = {1, -1, 0, 0};
-        int m_dy[4] = {0, 0, 1, -1};
+        // int m_dx[4] = {1, -1, 0, 0};
+        // int m_dy[4] = {0, 0, 1, -1};
+        vector<int> roww = {0, 0, -1, 1};
+        vector<int> coll = {-1, 1, 0, 0};
 
         /**
          * @brief result to return with interger value
@@ -723,11 +727,14 @@ namespace leetcode
             return {prev, len};
         }
 
-        void travel_around(vector<vector<int>> &grid, int r, int c, int sum) {
-            if (r < 0 || r >= m || c < 0 || c >= n) {
+        void travel_around(vector<vector<int>> &grid, int r, int c, int sum)
+        {
+            if (r < 0 || r >= m || c < 0 || c >= n)
+            {
                 return;
             }
-            if (grid[r][c]) {
+            if (grid[r][c])
+            {
                 int tmp = grid[r][c];
                 grid[r][c] = 0;
                 sum += tmp;
@@ -765,6 +772,45 @@ namespace leetcode
                 }
             }
             grid[r][c] = k;
+        }
+
+        void bfs(vector<vector<int>> &grid, vector<vector<int>> &score, int n)
+        {
+            queue<pair<int, int>> q;
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (grid[i][j])
+                    {
+                        score[i][j] = 0;
+                        q.push({i, j});
+                    }
+                }
+            }
+
+            while (!q.empty())
+            {
+                auto t = q.front();
+                q.pop();
+
+                int x = t.first, y = t.second;
+                int s = score[x][y];
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int newX = x + roww[i];
+                    int newY = y + coll[i];
+
+                    if (newX >= 0 && newX < n && newY >= 0 && newY < n && score[newX][newY] > 1 + s)
+                    {
+
+                        score[newX][newY] = 1 + s;
+                        q.push({newX, newY});
+                    }
+                }
+            }
         }
     };
 };
