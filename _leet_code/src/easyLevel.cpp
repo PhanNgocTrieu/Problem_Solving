@@ -688,7 +688,7 @@ namespace leetcode
         }
     }
 
-    bool evaluateTree(TreeNode* root) {
+    bool easyLevel::evaluateTree(TreeNode* root) {
         if (root->val == 1 || root->val == 0) {
             return root->val == 1;
         }
