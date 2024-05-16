@@ -448,7 +448,7 @@ namespace leetcode
             A leaf node is a node that has zero children.
 
             Example:
-                   OR               =>             OR               =>          True
+                   OR               =>             OR               =>          Truew
                   /  \                            /  \
                 /     \                          /    \
               true    And                      True   False
