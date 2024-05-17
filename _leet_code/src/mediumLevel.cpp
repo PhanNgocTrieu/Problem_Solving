@@ -1477,4 +1477,23 @@ namespace leetcode
         }
         return -1;
     }
+
+    TreeNode* mediumLevel::removeLeafNodes(TreeNode* root, int target) {
+        if (root == nullptr) {
+            return nullptr;
+        }
+
+        TreeNode* left = removeLeafNodes(root->left, target);
+        TreeNode* right = removeLeafNodes(root->right, target);
+
+        if (root->val == target
+        && left == nullptr
+        && right == nullptr) {
+            return nullptr;
+        } else {
+            root->left = left;
+            root->right = right;
+        }
+        return root;
+    }
 }
