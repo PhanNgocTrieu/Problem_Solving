@@ -699,4 +699,30 @@ namespace leetcode
 
         return evaluateTree(root->left) && evaluateTree(root->right);   
     }
+
+    string easyLevel::reversePrefix(string word, char ch) {
+    	int found_idx = -1;
+	// Find the index of ch
+        for (int i = 0; i < word.size(); i++) {
+            if (word[i] == ch) {
+                found_idx = i;
+                break;
+            }
+        }
+
+	// Reverse the index from ch to prev
+        if (found_idx != -1) {
+            int i = 0;
+            while (i < found_idx) {
+                char temp = word[found_idx];
+                word[found_idx] = word[i];
+                word[i] = temp;
+                cout << word[found_idx] << " - " << word[i] << endl;
+                i++;
+                found_idx--;
+            }
+        }
+
+        return word;
+    }
 };  
