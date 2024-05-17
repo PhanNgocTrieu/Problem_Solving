@@ -601,6 +601,26 @@ namespace leetcode
 
         int maximumSafenessFactor(vector<vector<int>> &grid);
 
+        /*
+            Given a binary tree root and an integer target, delete all the leaf nodes with value target.
+            Note that once you delete a leaf node with value target, if its parent node becomes a leaf node and has the value target, 
+            it should also be deleted (you need to continue doing that until you cannot).
+
+            Example: (root, 3)                    =>                 [Result]
+                        1                                               1 
+                      /   \                                               \
+                    3      2                                               2
+
+            Example 2:
+                    (root, 2)                    =>                  [Result]
+                        1                                                1
+                      /   \                                            /   \
+                     2     3                                          2     3
+                   /   \                                               \
+                  2     1                                               1
+        */
+        TreeNode* removeLeafNodes(TreeNode* root, int target);
+
     protected:
         // int m_dx[4] = {1, -1, 0, 0};
         // int m_dy[4] = {0, 0, 1, -1};
