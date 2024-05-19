@@ -18,5 +18,5 @@ fi
 git pull
 git add .
 git commit -m "Update files for serve God"
-git push origin God
+git push origin master
 echo "Finished Process of Updated"
