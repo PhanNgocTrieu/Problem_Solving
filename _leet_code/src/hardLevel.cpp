@@ -286,4 +286,87 @@ namespace leetcode
         }
         return sum;
     }
+
+    /*
+    Intuition
+        The intuition behind this approach is that XOR operations on elements in the list can either increase or decrease their values. The goal is to maximize the overall sum after these operations. By tracking the minimum positive change and the maximum negative change, the solution ensures that if the count of beneficial operations (positive changes) is odd, we can adjust the sum to ensure it remains maximized.
+    
+    Approach
+        Initialization:
+            totalSum keeps track of the total sum of elements after potential XOR operations.
+            count tracks the number of elements that were increased by the XOR operation.
+            positiveMin is initialized to infinity and will store the minimum positive net change from the XOR operation.
+            negativeMax is initialized to negative infinity and will store the maximum negative net change from the XOR operation.
+        
+        Iterating Through Elements:
+            For each element in nums, 
+            compute the result of XOR-ing the element with k (i.e., nodeValAfterOperation = nodeValue ^ k).
+            Calculate the netChange which is the difference between the XOR-ed value and the original value (netChange = nodeValAfterOperation - nodeValue).
+        
+        Updating totalSum:
+            Add the original value of the element to totalSum.
+            If the netChange is positive (i.e., the XOR operation results in a higher value), 
+            update positiveMin if this change is the smallest positive change encountered and add this net change to totalSum.
+            If the netChange is negative, update negativeMax if this change is the largest negative change encountered.
+
+        Counting Operations:
+            Increment the count for each positive net change since we are tracking how many elements were beneficially changed by the XOR operation.
+            Balancing the Count of Changes:
+                If the count (number of beneficial changes) is even, return totalSum directly since an even count of positive changes ensures the sum is maximized.
+                If the count is odd, we face a dilemma since adding or subtracting an odd number of beneficial changes can be suboptimal. Hence, we need to decide whether to:
+                    Remove the smallest positive change to make the count even (maximizing totalSum - positiveMin).
+                    Add the largest negative change (potentially minimizing the loss) to balance out the sum (maximizing totalSum + negativeMax).
+    */
+    long long maximumValueSum(vector<int>& nums, int k, vector<vector<int>>& edges) {
+        long long totalSum = 0;
+        int count = 0;
+        int positiveMin = INT_MAX;
+        int negativeMax = INT_MIN;
+
+        for (int nodeValue : nums) {
+            int nodeValAfterOperation = nodeValue ^ k;
+            totalSum += nodeValue;
+            int netChange = nodeValAfterOperation - nodeValue;
+
+            if (netChange > 0) {
+                positiveMin = min(positiveMin, netChange);
+                totalSum += netChange;
+                count += 1;
+            } else {
+                negativeMax = max(negativeMax, netChange);
+            }
+        }
+
+        if (count % 2 == 0) {
+            return totalSum;
+        }
+        return max(totalSum - positiveMin, totalSum + negativeMax);
+        
+#if 0 
+        int n = nums.size();
+        vector<vector<int>> graph(n);
+        for (auto& edge : edges) {
+            graph[edge[0]].push_back(edge[1]);
+            graph[edge[1]].push_back(edge[0]);
+        }
+        
+        function<pair<long long, long long>(int, int)> dfs = [&](int node, int parent) {
+            long long orig_sum = nums[node];
+            long long xor_sum = nums[node] ^ k;
+            
+            for (int neighbor : graph[node]) {
+                if (neighbor != parent) {
+                    auto [child_orig, child_xor] = dfs(neighbor, node);
+                    orig_sum += max(child_orig, child_xor);
+                    xor_sum += max(child_orig ^ k, child_xor ^ k);
+                }
+            }
+            
+            return make_pair(orig_sum, xor_sum);
+        };
+        
+        auto [total_orig, total_xor] = dfs(0, -1);
+        return max(total_orig, total_xor);
+#endif
+    }
 };
