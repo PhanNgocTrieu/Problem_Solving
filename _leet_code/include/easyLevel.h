@@ -495,6 +495,8 @@ namespace leetcode
                 => 0 + 5 + 1 + 6 + 4 + 3 + 7 + 2 = 28
         */
         int subsetXORSum(vector<int>& nums);
+        /* Supported function */
+        int XORSum(vector<int>& nums, int index, int currentXOR);
     };
 };
 
