@@ -621,6 +621,21 @@ namespace leetcode
         */
         TreeNode* removeLeafNodes(TreeNode* root, int target);
 
+        /*
+            Given an integer array nums of unique elements, return all possible subsets (the power set).
+            The solution set must not contain duplicate subsets. Return the solution in any order.
+
+            Example 1:
+                Input: nums = [1,2,3]
+                Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+            Example 2:
+                Input: nums = [0]
+                Output: [[],[0]]
+        */
+        vector<vector<int>> subsets(vector<int>& nums);
+        // Supported function
+        void generate_subset(const vector<int>& nums, int index = 0);
+
     protected:
         // int m_dx[4] = {1, -1, 0, 0};
         // int m_dy[4] = {0, 0, 1, -1};
@@ -639,6 +654,9 @@ namespace leetcode
          * @brief size of cols in 2D matrix
          */
         int n;
+
+        vector<vector<int>> m_2DVecRes;
+        vector<int> m_1DVecTmp = {};
 
     private:
         /* ===================== These functions for supporting ============================= */
