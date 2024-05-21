@@ -1496,4 +1496,24 @@ namespace leetcode
         }
         return root;
     }
+
+    void generate_subset(const vector<int>& nums, int index = 0) {
+        m_2DVecRes.push_back(m_1DVecTmp);
+       // Generate subsets by recursively including and
+        // excluding elements
+        for (int i = index; i < nums.size(); i++) {
+            // Include the current element in the subset
+            m_1DVecTmp.push_back(nums[i]);
+            // Recursively generate subsets with the current
+            // element included
+            generate_subset(nums, i + 1);
+            // Exclude the current element from the subset
+            // (backtracking)
+            m_1DVecTmp.pop_back();
+        }
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        generate_subset(nums);
+        return m_2DVecRes;
+    }
 }
