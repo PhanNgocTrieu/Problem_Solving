@@ -636,6 +636,18 @@ namespace leetcode
         // Supported function
         void generate_subset(const vector<int>& nums, int index = 0);
 
+        /*
+            Given a string s, partition s such that every substring of the partition is a palindrome. 
+            Return all possible palindrome partitioning of s.
+
+            Input: s = "aab"
+            Output: [["a","a","b"],["aa","b"]]
+
+            Input: s = "a"
+            Output: [["a"]]
+        */
+        vector<vector<string>> partition(string s);
+        void backtrack_partition(const string& s, int start, vector<string>& path, vector<vector<string>>& result);
     protected:
         // int m_dx[4] = {1, -1, 0, 0};
         // int m_dy[4] = {0, 0, 1, -1};
@@ -849,6 +861,15 @@ namespace leetcode
                     }
                 }
             }
+        }
+
+        bool isPalindrome(const string& s, int left, int right) {
+            while (left < right) {
+                if (s[left++] != s[right--]) {
+                    return false;
+                }
+            }
+            return true;
         }
     };
 };
