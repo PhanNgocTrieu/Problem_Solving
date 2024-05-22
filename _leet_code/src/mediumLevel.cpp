@@ -1497,7 +1497,7 @@ namespace leetcode
         return root;
     }
 
-    void generate_subset(const vector<int>& nums, int index = 0) {
+    void mediumLevel::generate_subset(const vector<int>& nums, int index = 0) {
         m_2DVecRes.push_back(m_1DVecTmp);
        // Generate subsets by recursively including and
         // excluding elements
@@ -1512,8 +1512,36 @@ namespace leetcode
             m_1DVecTmp.pop_back();
         }
     }
-    vector<vector<int>> subsets(vector<int>& nums) {
+    vector<vector<int>> mediumLevel::subsets(vector<int>& nums) {
         generate_subset(nums);
         return m_2DVecRes;
+    }
+
+    vector<vector<string>> mediumLevel::partition(string s)
+    {
+        vector<vector<string>> result;
+        vector<string> path;
+        backtrack(s, 0, path, result);
+        return result;
+    }
+
+    void mediumLevel::backtrack_partition(const string& s, int start, vector<string>& path, vector<vector<string>>& result) {
+        // If we've reached the end of the string, add the current partition to the result list
+        if (start == s.length()) {
+            result.push_back(path);
+            // PRINT_2D_VECTOR(result);
+            return;
+        }
+        // Explore all possible partitions
+        for (int end = start + 1; end <= s.length(); ++end) {
+            // If the current substring is a palindrome, add it to the current path
+            if (isPalindrome(s, start, end - 1)) {
+                path.push_back(s.substr(start, end - start));
+                // Recur to find other partitions
+                backtrack(s, end, path, result);
+                // Backtrack to explore other partitions
+                path.pop_back();
+            }
+        }
     }
 }
