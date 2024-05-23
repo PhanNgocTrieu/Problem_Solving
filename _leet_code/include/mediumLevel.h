@@ -648,6 +648,9 @@ namespace leetcode
         */
         vector<vector<string>> partition(string s);
         void backtrack_partition(const string& s, int start, vector<string>& path, vector<vector<string>>& result);
+
+        int beautifulSubsets(vector<int>& nums, int k);
+        void explore(vector<int>& nums, int k, int index);
     protected:
         // int m_dx[4] = {1, -1, 0, 0};
         // int m_dy[4] = {0, 0, 1, -1};
