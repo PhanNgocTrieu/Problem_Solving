@@ -648,9 +648,10 @@ namespace leetcode
         */
         vector<vector<string>> partition(string s);
         void backtrack_partition(const string& s, int start, vector<string>& path, vector<vector<string>>& result);
-
+#if 0
         int beautifulSubsets(vector<int>& nums, int k);
-        void explore(vector<int>& nums, int k, int index);
+        void explore(vector<int>& nums, int k, int index, vector<int> visited);
+#endif
     protected:
         // int m_dx[4] = {1, -1, 0, 0};
         // int m_dy[4] = {0, 0, 1, -1};
@@ -669,6 +670,7 @@ namespace leetcode
          * @brief size of cols in 2D matrix
          */
         int n;
+        int count = 0;
 
         vector<vector<int>> m_2DVecRes;
         vector<int> m_1DVecTmp = {};

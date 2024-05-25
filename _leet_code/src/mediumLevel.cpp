@@ -1521,7 +1521,7 @@ namespace leetcode
     {
         vector<vector<string>> result;
         vector<string> path;
-        backtrack(s, 0, path, result);
+        backtrack_partition(s, 0, path, result);
         return result;
     }
 
@@ -1538,20 +1538,22 @@ namespace leetcode
             if (isPalindrome(s, start, end - 1)) {
                 path.push_back(s.substr(start, end - start));
                 // Recur to find other partitions
-                backtrack(s, end, path, result);
+                backtrack_partition(s, end, path, result);
                 // Backtrack to explore other partitions
                 path.pop_back();
             }
         }
     }
 
-    int beautifulSubsets(vector<int>& nums, int k) {
+#if 0
+    int mediumLevel::beautifulSubsets(vector<int>& nums, int k) {
+        vector<int> visited;
         count = 0;
-        explore(nums, k, 0);
+        explore(nums, k, 0, visited);
         return count - 1; // Subtract 1 to exclude the empty subset
     }
 
-    void explore(vector<int>& nums, int k, int index) {
+    void mediumLevel::explore(vector<int>& nums, int k, int index, vector<int> visited) {
         if (index == nums.size()) {
             count++;
             return;
@@ -1571,4 +1573,5 @@ namespace leetcode
 
         explore(nums, k, index + 1);
     }
+#endif 
 }
