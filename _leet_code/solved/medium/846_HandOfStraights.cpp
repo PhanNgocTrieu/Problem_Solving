@@ -19,6 +19,70 @@
 */
 class Solution {
 public:
+#define SELF_SOLVED
+    bool isNStraightHand(vector<int>& hand, int groupSize) {
+    	// If impossible for creating group
+    	if (hand.size() % groupSize != 0) {
+    		return false;
+    	}
+    	std::sort(hand.begin(), hand.end());
+    	bool isNotRemainValue = false;
+    	int _start = hand[0];
+    	hand[0] = -1;
+    	int _count = 1;
+    	bool res = true;
+    	while (!isNotRemainValue) {
+    		isNotRemainValue = true;
+    		for (int i = 1; i < hand.size(); ++i) {
+#if 0
+    			cout << endl;
+    			for (auto e : hand) {
+    				cout << e << " ";
+    			}
+    			cout << endl;
+    			cout << "\t -> _start: " << _start << " _count: " << _count << " hand[i]: " << hand[i]  << endl;
+#endif
+    			if (_count == groupSize) {
+    				_count = 0;
+    				_start = -1;
+    				break;
+    			}
+    			if (hand[i] != -1) {
+    				if (_start == -1) {
+    					_start = hand[i];
+    					hand[i] = -1;
+    					_count++;
+    					isNotRemainValue = false;
+    				}
+    
+    				if (hand[i] > _start + 1) {
+    					res = false;
+    					break;
+    				}
+    				else if (hand[i] - 1 == _start) {
+    					_start = hand[i];
+    					hand[i] = -1;
+    					isNotRemainValue = false;
+    					_count++;
+    				}
+    			}
+    		}
+    		if (_count == groupSize) {
+    			_count = 0;
+    			_start = -1;
+    			isNotRemainValue = false;
+    		}
+    		if (!res) {
+    			break;
+    		}
+    	}
+    
+    	if (_count != 0) {
+    		res = false;
+    	}
+    	return res;
+    }
+#else
    bool findSuccessors(vector<int>& hand, int groupSize, int i, int n) {
         int next = hand[i] + 1;
         hand[i] = -1;  // Mark as used
@@ -46,4 +110,5 @@ public:
         }
         return true;
     }
+#endif
 };
