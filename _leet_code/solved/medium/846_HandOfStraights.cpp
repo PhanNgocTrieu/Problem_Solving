@@ -19,7 +19,7 @@
 */
 class Solution {
 public:
-#define SELF_SOLVED
+#ifdef SELF_SOLVED
     bool isNStraightHand(vector<int>& hand, int groupSize) {
     	// If impossible for creating group
     	if (hand.size() % groupSize != 0) {
