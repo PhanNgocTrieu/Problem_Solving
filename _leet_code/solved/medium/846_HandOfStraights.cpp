@@ -25,6 +25,9 @@ public:
     	if (hand.size() % groupSize != 0) {
     		return false;
     	}
+        if (groupSize == 1) {
+            return true;
+        }
     	std::sort(hand.begin(), hand.end());
     	bool isNotRemainValue = false;
     	int _start = hand[0];
