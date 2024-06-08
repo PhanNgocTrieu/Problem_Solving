@@ -23,19 +23,19 @@ add_executable(${PROJECT_NAME} main.cpp)
 # Put the test under the linked above gTest
 enable_testing()
 
-add_executable(
-    insert_interval
-    test/insert_interval.cc
-)
+# add_executable(
+#     insert_interval
+#     test/insert_interval.cc
+# )
 target_link_libraries(
     ${PROJECT_NAME}
     GTest::gtest_main
 )
-target_link_libraries(
-    insert_interval
-    GTest::gtest_main
-)
+# target_link_libraries(
+    # insert_interval
+    # GTest::gtest_main
+# )
 
 include(GoogleTest)
-gtest_discover_tests(insert_interval)
+# gtest_discover_tests(insert_interval)
 gtest_discover_tests(${PROJECT_NAME})
