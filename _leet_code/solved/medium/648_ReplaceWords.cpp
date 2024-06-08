@@ -72,7 +72,6 @@ bool isExistInDictionray(const vector<string> &dictionary, string& word, const u
 
 string replaceWords(vector<string> &dictionary, string sentence)
 {
-	// cout << __FUNCTION__ << " word: " << word << endl;
 	unordered_map<string, string> mapping;
 	for (auto dic : dictionary) {
 		if (mapping[dic] != "") {
@@ -85,30 +84,17 @@ string replaceWords(vector<string> &dictionary, string sentence)
 			mapping[dic] = dic;
 		}
 	}
-
-	// for (auto elem : mapping) {
-	// 	cout << "key: " << elem.first << " - value: " << elem.second << endl;
-	// }
-	// cout << endl;
 	string result = "";
-#if 1
 	auto foundIt = sentence.find_first_of(' ');
 	while (foundIt != sentence.npos) {
 		auto get_word = sentence.substr(0, foundIt);
-		// cout << "word:" << get_word << endl;
-		// handle checking word;
 		(void)isExistInDictionray(dictionary, get_word, mapping);
 		result += get_word + " ";
-		// cout << " after compare: " << result << endl;
-		// Remove word
 		sentence.erase(0, foundIt + 1);
-		// cout << sentence << endl;
 		foundIt = sentence.find_first_of(' ');
 	}
-
 	isExistInDictionray(dictionary, sentence, mapping);
 	result += sentence;
-#endif
 	return result;
 }
 
@@ -142,7 +128,6 @@ TEST(ReplaceWords, UI_TEST) {
 int main(int argc, char *argv[])
 {
 	testing::InitGoogleTest(&argc, argv);
-	// test_interval();
 	return RUN_ALL_TESTS();
 }
 #endif
