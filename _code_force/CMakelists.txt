@@ -1,0 +1,2 @@
+add_executable(codeforce ./main.cpp)
+target_compile_options(codeforce PRIVATE -std=c++11 -Wall)
